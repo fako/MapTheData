@@ -8,6 +8,7 @@
 
 #import "FBViewController.h"
 #import <RestKit/RestKit.h>
+#import <CoreData/CoreData.h>
 
 #import "FBLocation.h"
 
@@ -20,8 +21,19 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	
-    RKObjectMapping* locationMapping = [RKObjectMapping mappingForClass:[FBLocation class]];
+    
+	NSString *baseUrl = @"http://still-atoll-8938.herokuapp.com";
+    
+    RKObjectManager *restKitObjectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:baseUrl]];
+    
+    RKManagedObjectStore *managedObjectStore = [[RKManagedObjectStore alloc] initWithPersistentStoreCoordinator:[AppDelegate persistentStoreCoordinator]];
+    
+    [managedObjectStore createManagedObjectContexts];
+    
+    restKitObjectManager.managedObjectStore = managedObjectStore;
+    
+    
+    RKEntityMapping* locationMapping = [RKEntityMapping mappingForEntityForName:@"Location" inManagedObjectStore:managedObjectStore];
     [locationMapping addAttributeMappingsFromDictionary:@{
                                                           @"name": @"name",
                                                           @"secondaryName": @"secondaryName",
@@ -30,6 +42,8 @@
                                                           @"lat": @"lat",
                                                           @"lng": @"lng"
                                                          }];
+    locationMapping.identificationAttributes = @[@"name"];
+    
     
     RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:locationMapping
                                                                                             method:RKRequestMethodAny
@@ -39,9 +53,11 @@
                                                 ];
 
     
-    NSString *baseUrl = @"http://still-atoll-8938.herokuapp.com";
     
-    RKObjectManager *restKitObjectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:baseUrl]];
+    
+    
+    
+    
     [restKitObjectManager setRequestSerializationMIMEType:RKMIMETypeJSON];
     [restKitObjectManager addResponseDescriptor:responseDescriptor];
     

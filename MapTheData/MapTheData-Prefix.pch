@@ -5,6 +5,7 @@
 //
 
 #import <Availability.h>
+#import "FBAppDelegate.h"
 
 #ifndef __IPHONE_5_0
 #warning "This project uses features only available in iOS SDK 5.0 and later."
@@ -14,3 +15,5 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
 #endif
+
+#define AppDelegate ((FBAppDelegate*)[UIApplication sharedApplication].delegate)

@@ -9,6 +9,14 @@
 #import "FBLocation.h"
 
 @implementation FBLocation
+
+@dynamic name;
+@dynamic secondaryName;
+@dynamic type;
+@dynamic typeNumber;
+@dynamic lat;
+@dynamic lng;
+
 @end
 
 

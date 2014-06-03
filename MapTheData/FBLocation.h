@@ -7,8 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
 
-@interface FBLocation : NSObject
+
+@interface FBLocation : NSManagedObject
 
 @property (nonatomic, copy) NSString* name;
 @property (nonatomic, copy) NSString* secondaryName;
