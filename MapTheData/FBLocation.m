@@ -9,5 +9,6 @@
 #import "FBLocation.h"
 
 @implementation FBLocation
-
 @end
+
+

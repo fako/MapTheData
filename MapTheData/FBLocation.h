@@ -10,4 +10,12 @@
 
 @interface FBLocation : NSObject
 
+@property (nonatomic, copy) NSString* name;
+@property (nonatomic, copy) NSString* secondaryName;
+@property (nonatomic, copy) NSString* type;
+@property (nonatomic, copy) NSString* typeNumber;
+@property (nonatomic, copy) NSNumber* lat;
+@property (nonatomic, copy) NSNumber* lng;
+
+
 @end
