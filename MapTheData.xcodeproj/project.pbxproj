@@ -23,6 +23,8 @@
 		2A285062193CD592000F20AF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2A285060193CD592000F20AF /* InfoPlist.strings */; };
 		2A285064193CD592000F20AF /* MapTheDataTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A285063193CD592000F20AF /* MapTheDataTests.m */; };
 		2A64A5E9193D0AF30096C62A /* FBLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A64A5E8193D0AF30096C62A /* FBLocation.m */; };
+		2A64A5EB193DA7700096C62A /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A64A5EA193DA7700096C62A /* CoreData.framework */; };
+		2A64A5EE193DA7E00096C62A /* TheData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2A64A5EC193DA7E00096C62A /* TheData.xcdatamodeld */; };
 		8650EE312DC64AE3ABF2C6FE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F0BA4D3A5554E868764C859 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +61,8 @@
 		2A285063193CD592000F20AF /* MapTheDataTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapTheDataTests.m; sourceTree = "<group>"; };
 		2A64A5E7193D0AF30096C62A /* FBLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBLocation.h; sourceTree = "<group>"; };
 		2A64A5E8193D0AF30096C62A /* FBLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBLocation.m; sourceTree = "<group>"; };
+		2A64A5EA193DA7700096C62A /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		2A64A5ED193DA7E00096C62A /* TheData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TheData.xcdatamodel; sourceTree = "<group>"; };
 		57A6F5BB1B224D158D6732F6 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		5F0BA4D3A5554E868764C859 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -68,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A64A5EB193DA7700096C62A /* CoreData.framework in Frameworks */,
 				2A285038193CD591000F20AF /* CoreGraphics.framework in Frameworks */,
 				2A28503A193CD592000F20AF /* UIKit.framework in Frameworks */,
 				2A285036193CD591000F20AF /* Foundation.framework in Frameworks */,
@@ -111,6 +116,7 @@
 		2A285034193CD591000F20AF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2A64A5EA193DA7700096C62A /* CoreData.framework */,
 				2A285035193CD591000F20AF /* Foundation.framework */,
 				2A285037193CD591000F20AF /* CoreGraphics.framework */,
 				2A285039193CD592000F20AF /* UIKit.framework */,
@@ -144,6 +150,7 @@
 				2A28503E193CD592000F20AF /* InfoPlist.strings */,
 				2A285041193CD592000F20AF /* main.m */,
 				2A285043193CD592000F20AF /* MapTheData-Prefix.pch */,
+				2A64A5EC193DA7E00096C62A /* TheData.xcdatamodeld */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -303,6 +310,7 @@
 				2A64A5E9193D0AF30096C62A /* FBLocation.m in Sources */,
 				2A285046193CD592000F20AF /* FBAppDelegate.m in Sources */,
 				2A285042193CD592000F20AF /* main.m in Sources */,
+				2A64A5EE193DA7E00096C62A /* TheData.xcdatamodeld in Sources */,
 				2A28504F193CD592000F20AF /* FBViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -532,6 +540,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		2A64A5EC193DA7E00096C62A /* TheData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				2A64A5ED193DA7E00096C62A /* TheData.xcdatamodel */,
+			);
+			currentVersion = 2A64A5ED193DA7E00096C62A /* TheData.xcdatamodel */;
+			path = TheData.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 2A28502A193CD591000F20AF /* Project object */;
 }
