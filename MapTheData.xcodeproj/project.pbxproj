@@ -13,8 +13,7 @@
 		2A285040193CD592000F20AF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2A28503E193CD592000F20AF /* InfoPlist.strings */; };
 		2A285042193CD592000F20AF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A285041193CD592000F20AF /* main.m */; };
 		2A285046193CD592000F20AF /* FBAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A285045193CD592000F20AF /* FBAppDelegate.m */; };
-		2A285049193CD592000F20AF /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A285047193CD592000F20AF /* Main_iPhone.storyboard */; };
-		2A28504C193CD592000F20AF /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A28504A193CD592000F20AF /* Main_iPad.storyboard */; };
+		2A285049193CD592000F20AF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A285047193CD592000F20AF /* Main.storyboard */; };
 		2A28504F193CD592000F20AF /* FBViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A28504E193CD592000F20AF /* FBViewController.m */; };
 		2A285051193CD592000F20AF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A285050193CD592000F20AF /* Images.xcassets */; };
 		2A285058193CD592000F20AF /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A285057193CD592000F20AF /* XCTest.framework */; };
@@ -25,6 +24,9 @@
 		2A64A5E9193D0AF30096C62A /* FBLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A64A5E8193D0AF30096C62A /* FBLocation.m */; };
 		2A64A5EB193DA7700096C62A /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A64A5EA193DA7700096C62A /* CoreData.framework */; };
 		2A64A5EE193DA7E00096C62A /* TheData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2A64A5EC193DA7E00096C62A /* TheData.xcdatamodeld */; };
+		2AF72D06193E4CA300BC1CF0 /* FBLoadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AF72D05193E4CA300BC1CF0 /* FBLoadViewController.m */; };
+		2AF72D0A193F033400BC1CF0 /* FBTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AF72D08193F033400BC1CF0 /* FBTableViewCell.m */; };
+		2AF72D0B193F033400BC1CF0 /* FBTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2AF72D09193F033400BC1CF0 /* FBTableViewCell.xib */; };
 		8650EE312DC64AE3ABF2C6FE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F0BA4D3A5554E868764C859 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -49,8 +51,7 @@
 		2A285043193CD592000F20AF /* MapTheData-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MapTheData-Prefix.pch"; sourceTree = "<group>"; };
 		2A285044193CD592000F20AF /* FBAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FBAppDelegate.h; sourceTree = "<group>"; };
 		2A285045193CD592000F20AF /* FBAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FBAppDelegate.m; sourceTree = "<group>"; };
-		2A285048193CD592000F20AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
-		2A28504B193CD592000F20AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
+		2A285048193CD592000F20AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2A28504D193CD592000F20AF /* FBViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FBViewController.h; sourceTree = "<group>"; };
 		2A28504E193CD592000F20AF /* FBViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FBViewController.m; sourceTree = "<group>"; };
 		2A285050193CD592000F20AF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -63,6 +64,11 @@
 		2A64A5E8193D0AF30096C62A /* FBLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBLocation.m; sourceTree = "<group>"; };
 		2A64A5EA193DA7700096C62A /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		2A64A5ED193DA7E00096C62A /* TheData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TheData.xcdatamodel; sourceTree = "<group>"; };
+		2AF72D04193E4CA300BC1CF0 /* FBLoadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBLoadViewController.h; sourceTree = "<group>"; };
+		2AF72D05193E4CA300BC1CF0 /* FBLoadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBLoadViewController.m; sourceTree = "<group>"; };
+		2AF72D07193F033400BC1CF0 /* FBTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBTableViewCell.h; sourceTree = "<group>"; };
+		2AF72D08193F033400BC1CF0 /* FBTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBTableViewCell.m; sourceTree = "<group>"; };
+		2AF72D09193F033400BC1CF0 /* FBTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FBTableViewCell.xib; sourceTree = "<group>"; };
 		57A6F5BB1B224D158D6732F6 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		5F0BA4D3A5554E868764C859 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -131,14 +137,18 @@
 			children = (
 				2A285044193CD592000F20AF /* FBAppDelegate.h */,
 				2A285045193CD592000F20AF /* FBAppDelegate.m */,
-				2A285047193CD592000F20AF /* Main_iPhone.storyboard */,
-				2A28504A193CD592000F20AF /* Main_iPad.storyboard */,
+				2A285047193CD592000F20AF /* Main.storyboard */,
 				2A28504D193CD592000F20AF /* FBViewController.h */,
 				2A28504E193CD592000F20AF /* FBViewController.m */,
+				2AF72D04193E4CA300BC1CF0 /* FBLoadViewController.h */,
+				2AF72D05193E4CA300BC1CF0 /* FBLoadViewController.m */,
 				2A285050193CD592000F20AF /* Images.xcassets */,
 				2A28503C193CD592000F20AF /* Supporting Files */,
 				2A64A5E7193D0AF30096C62A /* FBLocation.h */,
 				2A64A5E8193D0AF30096C62A /* FBLocation.m */,
+				2AF72D07193F033400BC1CF0 /* FBTableViewCell.h */,
+				2AF72D08193F033400BC1CF0 /* FBTableViewCell.m */,
+				2AF72D09193F033400BC1CF0 /* FBTableViewCell.xib */,
 			);
 			path = MapTheData;
 			sourceTree = "<group>";
@@ -252,9 +262,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2A28504C193CD592000F20AF /* Main_iPad.storyboard in Resources */,
+				2AF72D0B193F033400BC1CF0 /* FBTableViewCell.xib in Resources */,
 				2A285051193CD592000F20AF /* Images.xcassets in Resources */,
-				2A285049193CD592000F20AF /* Main_iPhone.storyboard in Resources */,
+				2A285049193CD592000F20AF /* Main.storyboard in Resources */,
 				2A285040193CD592000F20AF /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -308,9 +318,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A64A5E9193D0AF30096C62A /* FBLocation.m in Sources */,
+				2AF72D0A193F033400BC1CF0 /* FBTableViewCell.m in Sources */,
 				2A285046193CD592000F20AF /* FBAppDelegate.m in Sources */,
 				2A285042193CD592000F20AF /* main.m in Sources */,
 				2A64A5EE193DA7E00096C62A /* TheData.xcdatamodeld in Sources */,
+				2AF72D06193E4CA300BC1CF0 /* FBLoadViewController.m in Sources */,
 				2A28504F193CD592000F20AF /* FBViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -342,20 +354,12 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		2A285047193CD592000F20AF /* Main_iPhone.storyboard */ = {
+		2A285047193CD592000F20AF /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				2A285048193CD592000F20AF /* Base */,
 			);
-			name = Main_iPhone.storyboard;
-			sourceTree = "<group>";
-		};
-		2A28504A193CD592000F20AF /* Main_iPad.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2A28504B193CD592000F20AF /* Base */,
-			);
-			name = Main_iPad.storyboard;
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 		2A285060193CD592000F20AF /* InfoPlist.strings */ = {

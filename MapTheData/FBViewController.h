@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FBViewController : UIViewController
+@interface FBViewController : UIViewController <UISearchBarDelegate, UISearchDisplayDelegate, UITableViewDataSource>
 
 @end
