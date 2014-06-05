@@ -18,11 +18,18 @@ static NSString *kCellIdentifier = @"Cell";
 
 @implementation FBViewController
 
-//@dynamic searchResults;
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    FBLocation *location = [self quickFetchLocation];
+    
+    NSLog(@"%@", location.name);
+    
+    
+}
+
+- (FBLocation*)quickFetchLocation {
     
     NSManagedObjectContext *moc = [AppDelegate managedObjectContext];
     NSEntityDescription *entityDescription = [NSEntityDescription
@@ -48,8 +55,7 @@ static NSString *kCellIdentifier = @"Cell";
         NSLog(@"fail :(");
         // Deal with error...
     }
-    self.searchResults = array;
-    
+    return array[0];
     
 }
 
@@ -60,16 +66,8 @@ static NSString *kCellIdentifier = @"Cell";
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
     [request setEntity:entityDescription];
     
-    // Set example predicate and sort orderings...
-    NSString *predicateText = nil;
-    if(searchText.length > 3) {
-        predicateText = [NSString stringWithFormat:@"%@", searchText];
-    } else {
-        predicateText = [NSString stringWithFormat:@"%@", searchText];
-    }
-    
     NSPredicate *predicate = [NSPredicate predicateWithFormat:
-                              @"name CONTAINS[c] %@", predicateText];
+                              @"name CONTAINS[c] %@", searchText];
     [request setPredicate:predicate];
     
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]
@@ -105,6 +103,17 @@ static NSString *kCellIdentifier = @"Cell";
     cell.textLabel.text = location.name;
     
     return cell;
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    [self.searchDisplayController setActive:NO animated:YES];
+    // TODO: perform request here to see if it is there
+    NSLog(@"%@", searchBar.text);
+}
+
+- (void)tableView: (UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self.searchDisplayController setActive:NO animated:YES];
+    NSLog(@"%@", [self.searchResults[indexPath.row] name]);
 }
 
 @end
