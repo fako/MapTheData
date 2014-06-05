@@ -18,15 +18,79 @@ static NSString *kCellIdentifier = @"Cell";
 
 @implementation FBViewController
 
+//@dynamic searchResults;
+
 - (void)viewDidLoad
 {
-    
     [super viewDidLoad];
+    
+    NSManagedObjectContext *moc = [AppDelegate managedObjectContext];
+    NSEntityDescription *entityDescription = [NSEntityDescription
+                                              entityForName:@"Location" inManagedObjectContext:moc];
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    [request setEntity:entityDescription];
+    
+    // Set example predicate and sort orderings...
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:
+                              @"name like %@", @"G*"];
+    [request setPredicate:predicate];
+    
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]
+                                        initWithKey:@"name" ascending:YES];
+    [request setSortDescriptors:@[sortDescriptor]];
+    
+    NSError *error;
+    NSArray *array = [moc executeFetchRequest:request error:&error];
+    
+    
+    if (array == nil)
+    {
+        NSLog(@"fail :(");
+        // Deal with error...
+    }
+    self.searchResults = array;
+    
+    
+}
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    NSManagedObjectContext *moc = [AppDelegate managedObjectContext];
+    NSEntityDescription *entityDescription = [NSEntityDescription
+                                              entityForName:@"Location" inManagedObjectContext:moc];
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    [request setEntity:entityDescription];
+    
+    // Set example predicate and sort orderings...
+    NSString *predicateText = nil;
+    if(searchText.length > 3) {
+        predicateText = [NSString stringWithFormat:@"%@", searchText];
+    } else {
+        predicateText = [NSString stringWithFormat:@"%@", searchText];
+    }
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:
+                              @"name CONTAINS[c] %@", predicateText];
+    [request setPredicate:predicate];
+    
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]
+                                        initWithKey:@"name" ascending:YES];
+    [request setSortDescriptors:@[sortDescriptor]];
+    
+    NSError *error;
+    NSArray *array = [moc executeFetchRequest:request error:&error];
+    
+    
+    if (array == nil)
+    {
+        NSLog(@"fail :(");
+        // Deal with error...
+    }
+    self.searchResults = array;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
+    return self.searchResults.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -37,8 +101,8 @@ static NSString *kCellIdentifier = @"Cell";
     //[tableView registerClass:[FBTableViewCell class] forCellReuseIdentifier:@"Cell"];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifier forIndexPath:indexPath];
     
-    //MKMapItem *mapItem = [self.places objectAtIndex:indexPath.row];
-    cell.textLabel.text = @"test";//mapItem.name;
+    FBLocation *location = [self.searchResults objectAtIndex:indexPath.row];
+    cell.textLabel.text = location.name;
     
     return cell;
 }

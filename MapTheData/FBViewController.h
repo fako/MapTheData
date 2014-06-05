@@ -10,4 +10,6 @@
 
 @interface FBViewController : UIViewController <UISearchBarDelegate, UISearchDisplayDelegate, UITableViewDataSource>
 
+@property(nonatomic) NSArray *searchResults;
+
 @end

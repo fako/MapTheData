@@ -87,6 +87,8 @@
     
     NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"TheData.sqlite"];
     
+    NSLog(@"%@", storeURL);
+    
     // Helps to add things
     // Never rename things
     NSDictionary *options = @{

@@ -8,6 +8,7 @@
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="typeNumber" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
     </entity>
+    <fetchRequest name="FetchRequestAll" entity="Location" predicateString="name CONTAINS &quot;&quot;"/>
     <elements>
         <element name="Location" positionX="-63" positionY="-18" width="128" height="135"/>
     </elements>
