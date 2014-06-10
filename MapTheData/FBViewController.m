@@ -21,12 +21,23 @@ static NSString *kCellIdentifier = @"Cell";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    if (self.locationManager == nil) {
+        self.locationManager = [[CLLocationManager alloc] init];
+    }
+    self.locationManager.delegate = self;
+    //self.locManager.desiredAccuracy = kCLLocationAccuracyBest;
+    //self.locManager.distanceFilter = 10.0;
+    self.locationManager.purpose = @"So I can stalk you.";
+    [self.locationManager startUpdatingLocation];
+    
+    //self.map.showsUserLocation = YES;
     //self.map = [[MKMapView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
 }
 
 -(void)viewDidAppear:(BOOL)animated {
     
-    [super viewDidAppear:animated];
+    
+    //self.map.showsUserLocation = YES;
     
     
     
@@ -37,9 +48,18 @@ static NSString *kCellIdentifier = @"Cell";
     CLLocationCoordinate2D coordinates = CLLocationCoordinate2DMake(location.lat.doubleValue, location.lng.doubleValue);
     //MKCoordinateSpan span = { 0.12, 0.12 };
     //MKCoordinateRegion region = { coordinates, span };
+    CLLocationCoordinate2D userLocation = self.map.userLocation.location.coordinate;
     
-    self.map.centerCoordinate = coordinates;
-    //self.map.region = region;
+    MKMapPoint locationPoint = MKMapPointForCoordinate(coordinates);
+    MKMapPoint userPoint = MKMapPointForCoordinate(userLocation);
+    MKMapRect locationRect = MKMapRectMake(locationPoint.x, locationPoint.y, 0, 0);
+    MKMapRect userRect = MKMapRectMake(userPoint.x, userPoint.y, 0, 0);
+    
+    MKMapRect unitedRect = MKMapRectUnion(locationRect, userRect);
+    //unitedRect = MKMapRectInset(unitedRect, 10.0, 10.0);
+    
+    //self.map.centerCoordinate = coordinates;
+    //self.map.region =
     
     MKPointAnnotation *annotation = [MKPointAnnotation new];
     annotation.coordinate = coordinates;
@@ -47,9 +67,15 @@ static NSString *kCellIdentifier = @"Cell";
     
     [self.map addAnnotation:annotation];
     
-    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(coordinates, 750, 750);
+    //MKCoordinateRegion viewRegion = MKCoordinateRegionForMapRect(unitedRect);
     
-    [self.map setRegion:viewRegion animated:NO];
+    //[self.map setRegion:viewRegion animated:NO];
+    
+    [self.map setVisibleMapRect:unitedRect
+                        edgePadding:UIEdgeInsetsMake(20, 20, 20, 20)
+                           animated:NO];
+    
+    
     
     
     
@@ -144,6 +170,25 @@ static NSString *kCellIdentifier = @"Cell";
 - (void)tableView: (UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.searchDisplayController setActive:NO animated:YES];
     NSLog(@"%@", [self.searchResults[indexPath.row] name]);
+}
+
+- (void)mapViewWillStartLocatingUser:(MKMapView *)mapView {
+    NSLog(@"Getting user info now");
+}
+- (void)mapViewDidStopLocatingUser:(MKMapView *)mapView {
+    NSLog(@"Stopped user info now");
+}
+- (void)mapViewWillStartLoadingMap:(MKMapView *)mapView {
+    NSLog(@"I am delegate");
+}
+- (void)mapView:(MKMapView *)mapView didFailToLocateUserWithError:(NSError *)error {
+    NSLog(@"User location error");
+}
+- (void)mapViewWillStartRenderingMap:(MKMapView *)mapView {
+    NSLog(@"Starting with user location: %hhd", mapView.userLocationVisible);
+}
+- (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
+    NSLog(@"bingo!");
 }
 
 @end
