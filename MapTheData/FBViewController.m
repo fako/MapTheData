@@ -21,10 +21,36 @@ static NSString *kCellIdentifier = @"Cell";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    //self.map = [[MKMapView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+    
+    [super viewDidAppear:animated];
+    
+    
     
     FBLocation *location = [self quickFetchLocation];
     
-    NSLog(@"%@", location.name);
+    NSLog(@"%@, %@, %@", location.name, location.lat, location.lng);
+    
+    CLLocationCoordinate2D coordinates = CLLocationCoordinate2DMake(location.lat.doubleValue, location.lng.doubleValue);
+    //MKCoordinateSpan span = { 0.12, 0.12 };
+    //MKCoordinateRegion region = { coordinates, span };
+    
+    self.map.centerCoordinate = coordinates;
+    //self.map.region = region;
+    
+    MKPointAnnotation *annotation = [MKPointAnnotation new];
+    annotation.coordinate = coordinates;
+    annotation.title = location.name;
+    
+    [self.map addAnnotation:annotation];
+    
+    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(coordinates, 750, 750);
+    
+    [self.map setRegion:viewRegion animated:NO];
+    
     
     
 }
@@ -39,7 +65,7 @@ static NSString *kCellIdentifier = @"Cell";
     
     // Set example predicate and sort orderings...
     NSPredicate *predicate = [NSPredicate predicateWithFormat:
-                              @"name like %@", @"G*"];
+                              @"name like %@", @"Eschmarke"];
     [request setPredicate:predicate];
     
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]
@@ -56,6 +82,10 @@ static NSString *kCellIdentifier = @"Cell";
         // Deal with error...
     }
     return array[0];
+    
+}
+
+- (void)userLocation {
     
 }
 

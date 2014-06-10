@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
 
 @interface FBViewController : UIViewController <UISearchBarDelegate, UISearchDisplayDelegate, UITableViewDataSource>
 
 @property(nonatomic) NSArray *searchResults;
+@property (weak, nonatomic) IBOutlet MKMapView *map;
 
 @end
