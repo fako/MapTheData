@@ -3,7 +3,7 @@
 //  MapTheData
 //
 //  Created by Fako Berkers on 6/2/14.
-//  Copyright (c) 2014 ___FULLUSERNAME___. All rights reserved.
+//  Copyright (c) 2014 Fako Berkers. All rights reserved.
 //
 
 
