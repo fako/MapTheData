@@ -43,6 +43,33 @@ static NSString *kCellIdentifier = @"Cell";
     
     FBLocation *location = [self quickFetchLocation];
     
+    if([location.lat doubleValue] == 0 && [location.lng doubleValue] == 0) {
+        
+        CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+        
+        [geocoder geocodeAddressString:location.name completionHandler:^(NSArray *placemarks, NSError *error) {
+            NSLog(@"Completion block");
+            if(error) {
+                NSLog(@"Oepsie");
+            } else {
+                NSLog(@"Success! :)");
+                CLLocationCoordinate2D coordinate = ((CLPlacemark*)placemarks[0]).location.coordinate;
+                NSLog(@"Lat: %f, Lng: %f", coordinate.latitude, coordinate.longitude);
+            }
+        }];
+        
+        
+    }
+    
+    
+    [self updateMapForLocation:location];
+    
+    
+    
+}
+
+- (void)updateMapForLocation:(FBLocation*)location {
+    
     NSLog(@"%@, %@, %@", location.name, location.lat, location.lng);
     
     CLLocationCoordinate2D coordinates = CLLocationCoordinate2DMake(location.lat.doubleValue, location.lng.doubleValue);
@@ -72,13 +99,8 @@ static NSString *kCellIdentifier = @"Cell";
     //[self.map setRegion:viewRegion animated:NO];
     
     [self.map setVisibleMapRect:unitedRect
-                        edgePadding:UIEdgeInsetsMake(20, 20, 20, 20)
-                           animated:NO];
-    
-    
-    
-    
-    
+                    edgePadding:UIEdgeInsetsMake(20, 20, 20, 20)
+                       animated:NO];
 }
 
 - (FBLocation*)quickFetchLocation {
@@ -91,7 +113,7 @@ static NSString *kCellIdentifier = @"Cell";
     
     // Set example predicate and sort orderings...
     NSPredicate *predicate = [NSPredicate predicateWithFormat:
-                              @"name like %@", @"Eschmarke"];
+                              @"name like %@", @"Martenshoek"]; // valid = Eschmarke
     [request setPredicate:predicate];
     
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]
