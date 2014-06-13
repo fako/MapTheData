@@ -25,10 +25,10 @@
             </objects>
             <point key="canvasLocation" x="168" y="-13"/>
         </scene>
-        <!--View Controller-->
+        <!--Map View Controller-->
         <scene sceneID="m4a-zj-qz4">
             <objects>
-                <viewController id="Z1V-Je-xr6" customClass="FBViewController" sceneMemberID="viewController">
+                <viewController id="Z1V-Je-xr6" customClass="FBMapViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bHM-DB-ldy"/>
                         <viewControllerLayoutGuide type="bottom" id="UGi-5i-kBO"/>

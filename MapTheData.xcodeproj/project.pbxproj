@@ -14,13 +14,14 @@
 		2A285042193CD592000F20AF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A285041193CD592000F20AF /* main.m */; };
 		2A285046193CD592000F20AF /* FBAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A285045193CD592000F20AF /* FBAppDelegate.m */; };
 		2A285049193CD592000F20AF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A285047193CD592000F20AF /* Main.storyboard */; };
-		2A28504F193CD592000F20AF /* FBViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A28504E193CD592000F20AF /* FBViewController.m */; };
+		2A28504F193CD592000F20AF /* FBMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A28504E193CD592000F20AF /* FBMapViewController.m */; };
 		2A285051193CD592000F20AF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A285050193CD592000F20AF /* Images.xcassets */; };
 		2A285058193CD592000F20AF /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A285057193CD592000F20AF /* XCTest.framework */; };
 		2A285059193CD592000F20AF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A285035193CD591000F20AF /* Foundation.framework */; };
 		2A28505A193CD592000F20AF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A285039193CD592000F20AF /* UIKit.framework */; };
 		2A285062193CD592000F20AF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2A285060193CD592000F20AF /* InfoPlist.strings */; };
 		2A285064193CD592000F20AF /* MapTheDataTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A285063193CD592000F20AF /* MapTheDataTests.m */; };
+		2A5DF149194B57DD00F905C3 /* FBViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A5DF148194B57DD00F905C3 /* FBViewController.m */; };
 		2A64A5E9193D0AF30096C62A /* FBLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A64A5E8193D0AF30096C62A /* FBLocation.m */; };
 		2A64A5EB193DA7700096C62A /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A64A5EA193DA7700096C62A /* CoreData.framework */; };
 		2A64A5EE193DA7E00096C62A /* TheData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2A64A5EC193DA7E00096C62A /* TheData.xcdatamodeld */; };
@@ -54,14 +55,16 @@
 		2A285044193CD592000F20AF /* FBAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FBAppDelegate.h; sourceTree = "<group>"; };
 		2A285045193CD592000F20AF /* FBAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FBAppDelegate.m; sourceTree = "<group>"; };
 		2A285048193CD592000F20AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		2A28504D193CD592000F20AF /* FBViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FBViewController.h; sourceTree = "<group>"; };
-		2A28504E193CD592000F20AF /* FBViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FBViewController.m; sourceTree = "<group>"; };
+		2A28504D193CD592000F20AF /* FBMapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FBMapViewController.h; sourceTree = "<group>"; };
+		2A28504E193CD592000F20AF /* FBMapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FBMapViewController.m; sourceTree = "<group>"; };
 		2A285050193CD592000F20AF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		2A285056193CD592000F20AF /* MapTheDataTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MapTheDataTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A285057193CD592000F20AF /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		2A28505F193CD592000F20AF /* MapTheDataTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MapTheDataTests-Info.plist"; sourceTree = "<group>"; };
 		2A285061193CD592000F20AF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2A285063193CD592000F20AF /* MapTheDataTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapTheDataTests.m; sourceTree = "<group>"; };
+		2A5DF147194B57DD00F905C3 /* FBViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBViewController.h; sourceTree = "<group>"; };
+		2A5DF148194B57DD00F905C3 /* FBViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBViewController.m; sourceTree = "<group>"; };
 		2A64A5E7193D0AF30096C62A /* FBLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBLocation.h; sourceTree = "<group>"; };
 		2A64A5E8193D0AF30096C62A /* FBLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBLocation.m; sourceTree = "<group>"; };
 		2A64A5EA193DA7700096C62A /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -145,8 +148,10 @@
 				2A285044193CD592000F20AF /* FBAppDelegate.h */,
 				2A285045193CD592000F20AF /* FBAppDelegate.m */,
 				2A285047193CD592000F20AF /* Main.storyboard */,
-				2A28504D193CD592000F20AF /* FBViewController.h */,
-				2A28504E193CD592000F20AF /* FBViewController.m */,
+				2A28504D193CD592000F20AF /* FBMapViewController.h */,
+				2A28504E193CD592000F20AF /* FBMapViewController.m */,
+				2A5DF147194B57DD00F905C3 /* FBViewController.h */,
+				2A5DF148194B57DD00F905C3 /* FBViewController.m */,
 				2AF72D04193E4CA300BC1CF0 /* FBLoadViewController.h */,
 				2AF72D05193E4CA300BC1CF0 /* FBLoadViewController.m */,
 				2A285050193CD592000F20AF /* Images.xcassets */,
@@ -329,9 +334,10 @@
 				2AF72D0A193F033400BC1CF0 /* FBTableViewCell.m in Sources */,
 				2A285046193CD592000F20AF /* FBAppDelegate.m in Sources */,
 				2A285042193CD592000F20AF /* main.m in Sources */,
+				2A5DF149194B57DD00F905C3 /* FBViewController.m in Sources */,
 				2A64A5EE193DA7E00096C62A /* TheData.xcdatamodeld in Sources */,
 				2AF72D06193E4CA300BC1CF0 /* FBLoadViewController.m in Sources */,
-				2A28504F193CD592000F20AF /* FBViewController.m in Sources */,
+				2A28504F193CD592000F20AF /* FBMapViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
