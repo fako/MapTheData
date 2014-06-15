@@ -27,8 +27,11 @@
 
 - (void)didFailToLoadModelsFromServer {
     [super didFailToLoadModelsFromServer];
-    [FBLocation locationsExistInDatabase:self]; // checks existance and informs this ViewController
-    // TODO: see if we have anything in db and continue if we do
+    if([FBLocation locationsExistInDatabase]) {
+        [self ready];
+    } else {
+        // TODO: update label
+    }
 }
 
 - (void)didSucceedToLoadModelsFromServer {
@@ -36,8 +39,4 @@
     [self ready];
 }
 
-- (void)didSucceedToFetchModelsFromDatabase:(NSArray *)fetched {
-    [super didSucceedToFetchModelsFromDatabase:fetched];
-    [self ready];
-}
 @end

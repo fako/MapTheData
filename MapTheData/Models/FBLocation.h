@@ -8,9 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
+#import <CoreLocation/CoreLocation.h>
 
 #import "FBServerDelegate.h"
 #import "FBDatabaseDelegate.h"
+#import "FBGeodataDelegate.h"
 
 @interface FBLocation : NSManagedObject
 
@@ -22,8 +24,10 @@
 @property (nonatomic, copy) NSNumber* lng;
 
 + (void)loadFromServer:(id<FBServerDelegate>)delegate;
-+ (BOOL)locationsExistInDatabase:(id<FBDatabaseDelegate>)delegate;
++ (BOOL)locationsExistInDatabase;
 
 + (void)searchFor:(NSString*)term delegate:(id<FBDatabaseDelegate>)delegate;
+
+- (CLLocationCoordinate2D)coordinates:(id<FBGeodataDelegate>)delegate;
 
 @end

@@ -7,7 +7,18 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreLocation/CoreLocation.h>
 
-@interface FBGeodata : NSObject
+#import "FBGeodataDelegate.h"
+
+@interface FBGeodata : NSObject <CLLocationManagerDelegate>
+
++ (instancetype)sharedGeodata;
+
+@property(strong, nonatomic) CLLocationManager *locationManager;
+@property(strong, nonatomic) CLGeocoder *geocoder;
+@property(strong, nonatomic) id<FBGeodataDelegate> delegate;
+
+- (void)coordinatesFromAddressString:(NSString*)address;
 
 @end

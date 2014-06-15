@@ -59,10 +59,12 @@
 }
 
 #pragma mark - Convenience functions
-- (BOOL)rowsDoExistInDatabaseForModel:(Class)model {
-    // TODO: implement
-    [self.delegate didSucceedToFetchModelsFromDatabase:[NSArray array]];
-    return YES;
+- (BOOL)rowsDoExistInDatabaseForModel:(Class)model
+{
+    NSFetchRequest *request = [self allRequestForModel:model sortAttribute:nil];
+    NSError *error;
+    NSArray *results = [[AppDelegate managedObjectContext] executeFetchRequest:request error:&error];
+    return results.count > 0;
 }
 
 #pragma mark - CoreData FetchRequest getters for models
@@ -83,12 +85,29 @@
 {
     NSFetchRequest *request = [self fetchRequestForModel:model];
     
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%@ CONTAINS[c] %@", attribute, term];
+    NSString* predicateString = [[NSString stringWithFormat:@"%@ CONTAINS[c] ", attribute] stringByAppendingString:@"%@"]; // @"name CONTAINS[c] %@"
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:predicateString, term];
     [request setPredicate:predicate];
     
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]
                                         initWithKey:attribute ascending:YES];
     [request setSortDescriptors:@[sortDescriptor]];
+    
+    return request;
+}
+
+- (NSFetchRequest*)allRequestForModel:(Class)model sortAttribute:(NSString*)attribute
+{
+    NSFetchRequest *request = [self fetchRequestForModel:model];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithValue:YES];
+    [request setPredicate:predicate];
+    
+    if(attribute) {
+        NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]
+                                        initWithKey:attribute ascending:YES];
+        [request setSortDescriptors:@[sortDescriptor]];
+    }
     
     return request;
 }

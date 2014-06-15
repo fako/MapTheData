@@ -31,7 +31,7 @@
         
         [self setupRestKitForBaseUrl:baseUrl];
         
-    } // TODO: else warning here?
+    }
 }
 
 - (NSString*)pathForModel:(Class)model withAppendix:(NSString*)appendix
@@ -99,7 +99,6 @@
     
 }
 
-// TODO: comment about mappings
 - (RKEntityMapping*)entityMappingForModel:(Class)model {
     
     NSAssert(self.restKitObjectManager, @"RestKit doesn't seem to be setup.");

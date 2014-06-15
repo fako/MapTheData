@@ -10,6 +10,8 @@
 
 #import "FBDatabase.h"
 #import "FBServer.h"
+#import "FBGeodata.h"
+#import "FBGeodataDelegate.h"
 
 
 @implementation FBLocation
@@ -37,13 +39,24 @@
     [server requestObjectsForModel:[self class]];
 }
 
+#pragma mark - Getters and setters
+
+- (CLLocationCoordinate2D)coordinates:(id<FBGeodataDelegate>)delegate {
+    if(!(self.lat.doubleValue == 0 && self.lng.doubleValue == 0)) {
+        return CLLocationCoordinate2DMake(self.lat.doubleValue, self.lng.doubleValue);
+    } else {
+        FBGeodata *geodata = [FBGeodata sharedGeodata];
+        geodata.delegate = delegate;
+        [geodata coordinatesFromAddressString:self.name];
+        return CLLocationCoordinate2DMake(0.0, 0.0); // needs some sane defaults here
+    }
+}
+
 #pragma mark - Database logic
 
-+ (BOOL)locationsExistInDatabase:(id<FBDatabaseDelegate>)delegate
++ (BOOL)locationsExistInDatabase
 {
-    FBDatabase *database = [FBDatabase sharedDatabase];
-    database.delegate = delegate;
-    return [database rowsDoExistInDatabaseForModel:[self class]];
+    return [[FBDatabase sharedDatabase] rowsDoExistInDatabaseForModel:[self class]];
 }
 
 + (void)searchFor:(NSString*)term delegate:(id<FBDatabaseDelegate>)delegate

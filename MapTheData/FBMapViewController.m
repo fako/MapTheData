@@ -11,153 +11,96 @@
 #import <CoreData/CoreData.h>
 
 #import "FBMapViewController.h"
-#import "FBLocation.h"
 #import "FBTableViewCell.h"
 
+#import "FBLocation.h"
+#import "FBUser.h"
+
 static NSString *kCellIdentifier = @"Cell";
+static const NSUInteger MAP_PADDING = 20;
+
 
 @implementation FBMapViewController
 
-- (void)viewDidLoad
+@synthesize viewLocation;
+@dynamic viewMapRect;
+
+- (void)viewDidAppear:(BOOL)animated
 {
-    [super viewDidLoad];
-    if (self.locationManager == nil) {
-        self.locationManager = [[CLLocationManager alloc] init];
-    }
-    self.locationManager.delegate = self;
-    //self.locManager.desiredAccuracy = kCLLocationAccuracyBest;
-    //self.locManager.distanceFilter = 10.0;
-    self.locationManager.purpose = @"So I can stalk you.";
-    [self.locationManager startUpdatingLocation];
-    
-    //self.map.showsUserLocation = YES;
-    //self.map = [[MKMapView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    [super viewDidAppear:animated];
+    [FBUser sharedUser].delegate = self; // redirects new permissions to this ViewController
+    [self updateMap:animated];
 }
 
--(void)viewDidAppear:(BOOL)animated {
+#pragma mark - MapRect getters and helpers
+
+- (MKMapRect)mapRectFromCoordinates:(CLLocationCoordinate2D)coordinates
+{
+    MKMapPoint point = MKMapPointForCoordinate(coordinates);
+    return MKMapRectMake(point.x, point.y, 0, 0);
+}
+
+- (MKMapRect)viewMapRect
+{
+    MKMapRect rect = MKMapRectNull;
     
-    
-    //self.map.showsUserLocation = YES;
-    
-    
-    
-    FBLocation *location = [self quickFetchLocation];
-    
-    if([location.lat doubleValue] == 0 && [location.lng doubleValue] == 0) {
+    if([FBUser sharedUser].isSharingLocation && self.viewLocation) {
         
-        CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+        MKMapRect userRect = [self mapRectFromCoordinates:[FBUser sharedUser].coordinates];
+        MKMapRect locationRect = [self mapRectFromCoordinates:[self.viewLocation coordinates:self]];
+        return MKMapRectUnion(userRect, locationRect);
         
-        [geocoder geocodeAddressString:location.name completionHandler:^(NSArray *placemarks, NSError *error) {
-            NSLog(@"Completion block");
-            if(error) {
-                NSLog(@"Oepsie");
-            } else {
-                NSLog(@"Success! :)");
-                CLLocationCoordinate2D coordinate = ((CLPlacemark*)placemarks[0]).location.coordinate;
-                NSLog(@"Lat: %f, Lng: %f", coordinate.latitude, coordinate.longitude);
-            }
-        }];
+    } else if (self.viewLocation) {
         
+        return [self mapRectFromCoordinates:[self.viewLocation coordinates:self]];
+        
+    } else if ([FBUser sharedUser].isSharingLocation) {
+        
+        return [self mapRectFromCoordinates:[FBUser sharedUser].coordinates];
         
     }
-    
-    
-    [self updateMapForLocation:location];
-    
-    
+    return rect; // a sain default here would be nice :)
     
 }
 
-- (void)updateMapForLocation:(FBLocation*)location {
+#pragma mark - MapView helpers
+
+- (void)updateAnnotationsUsingLocation:(FBLocation*)location {
     
-    NSLog(@"%@, %@, %@", location.name, location.lat, location.lng);
-    
-    CLLocationCoordinate2D coordinates = CLLocationCoordinate2DMake(location.lat.doubleValue, location.lng.doubleValue);
-    //MKCoordinateSpan span = { 0.12, 0.12 };
-    //MKCoordinateRegion region = { coordinates, span };
-    CLLocationCoordinate2D userLocation = self.map.userLocation.location.coordinate;
-    
-    MKMapPoint locationPoint = MKMapPointForCoordinate(coordinates);
-    MKMapPoint userPoint = MKMapPointForCoordinate(userLocation);
-    MKMapRect locationRect = MKMapRectMake(locationPoint.x, locationPoint.y, 0, 0);
-    MKMapRect userRect = MKMapRectMake(userPoint.x, userPoint.y, 0, 0);
-    
-    MKMapRect unitedRect = MKMapRectUnion(locationRect, userRect);
-    //unitedRect = MKMapRectInset(unitedRect, 10.0, 10.0);
-    
-    //self.map.centerCoordinate = coordinates;
-    //self.map.region =
+    if(self.viewAnnotation) {
+        [self.map removeAnnotation:self.viewAnnotation];
+    }
     
     MKPointAnnotation *annotation = [MKPointAnnotation new];
-    annotation.coordinate = coordinates;
+    annotation.coordinate = [location coordinates:self];
     annotation.title = location.name;
     
     [self.map addAnnotation:annotation];
-    
-    //MKCoordinateRegion viewRegion = MKCoordinateRegionForMapRect(unitedRect);
-    
-    //[self.map setRegion:viewRegion animated:NO];
-    
-    [self.map setVisibleMapRect:unitedRect
-                    edgePadding:UIEdgeInsetsMake(20, 20, 20, 20)
-                       animated:NO];
-}
-
-- (FBLocation*)quickFetchLocation {
-    
-    NSManagedObjectContext *moc = [AppDelegate managedObjectContext];
-    NSEntityDescription *entityDescription = [NSEntityDescription
-                                              entityForName:@"Location" inManagedObjectContext:moc];
-    NSFetchRequest *request = [[NSFetchRequest alloc] init];
-    [request setEntity:entityDescription];
-    
-    // Set example predicate and sort orderings...
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:
-                              @"name like %@", @"Martenshoek"]; // valid = Eschmarke
-    [request setPredicate:predicate];
-    
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]
-                                        initWithKey:@"name" ascending:YES];
-    [request setSortDescriptors:@[sortDescriptor]];
-    
-    NSError *error;
-    NSArray *array = [moc executeFetchRequest:request error:&error];
-    
-    
-    if (array == nil)
-    {
-        NSLog(@"fail :(");
-        // Deal with error...
-    }
-    return array[0];
+    self.viewAnnotation = annotation;
     
 }
 
-- (void)userLocation {
-    
+- (void)updateMapForLocation:(FBLocation*)location animated:(BOOL)animated
+{
+    [self updateAnnotationsUsingLocation:location];
+    self.viewLocation = location; // viewMapRect will now be adjusted to include this location
+    [self updateMap:animated];
 }
+
+- (void)updateMap:(BOOL)animated {
+    
+    [self.map setVisibleMapRect:self.viewMapRect // the getter merges annotation and user location or shows either one
+                    edgePadding:UIEdgeInsetsMake(MAP_PADDING, MAP_PADDING, MAP_PADDING, MAP_PADDING)
+                       animated:animated];
+}
+
+
+
+#pragma mark - Search bar
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-    // Search here using FBLocation and store results within delegate function ...
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return self.searchResults.count;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    [tableView registerNib:[UINib nibWithNibName:@"FBTableViewCell" bundle:[NSBundle mainBundle]]
-    forCellReuseIdentifier:@"Cell"
-     ];
-    //[tableView registerClass:[FBTableViewCell class] forCellReuseIdentifier:@"Cell"];
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifier forIndexPath:indexPath];
-    
-    FBLocation *location = [self.searchResults objectAtIndex:indexPath.row];
-    cell.textLabel.text = location.name;
-    
-    return cell;
+    // TODO: Search here using FBLocation and store results within delegate function ...
+    [FBLocation searchFor:searchText delegate:self];
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
@@ -166,28 +109,68 @@ static NSString *kCellIdentifier = @"Cell";
     NSLog(@"%@", searchBar.text);
 }
 
-- (void)tableView: (UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self.searchDisplayController setActive:NO animated:YES];
-    NSLog(@"%@", [self.searchResults[indexPath.row] name]);
+#pragma mark - Search table view
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.searchResults.count;
 }
 
-- (void)mapViewWillStartLocatingUser:(MKMapView *)mapView {
-    //NSLog(@"Getting user info now");
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UINib *nib = [UINib nibWithNibName:@"FBTableViewCell" bundle:[NSBundle mainBundle]];
+    [tableView registerNib:nib forCellReuseIdentifier:@"Cell"];
+    FBTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifier forIndexPath:indexPath];
+    
+    FBLocation *location = [self.searchResults objectAtIndex:indexPath.row];
+    cell.textLabel.text = location.name;
+    
+    return cell;
 }
-- (void)mapViewDidStopLocatingUser:(MKMapView *)mapView {
-    //NSLog(@"Stopped user info now");
+
+- (void)tableView: (UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self.searchDisplayController setActive:NO animated:NO];
+    [self updateMapForLocation:self.searchResults[indexPath.row] animated:YES];
 }
-- (void)mapViewWillStartLoadingMap:(MKMapView *)mapView {
-    //NSLog(@"I am delegate");
+
+#pragma mark - FBDatabase delegate methods
+
+- (void)didSucceedToFetchModelsFromDatabase:(NSArray *)fetched
+{
+    self.searchResults = fetched;
 }
-- (void)mapView:(MKMapView *)mapView didFailToLocateUserWithError:(NSError *)error {
-    //NSLog(@"User location error");
+
+#pragma mark - FBGeodata delegate methods
+
+- (void)willStartGeoLookup
+{
+    NSLog(@"Starting lookup");
 }
-- (void)mapViewWillStartRenderingMap:(MKMapView *)mapView {
-    //NSLog(@"Starting with user location: %hhd", mapView.userLocationVisible);
+
+- (void)didFinishGeoLookup:(CLLocationCoordinate2D)coordinates
+{
+    NSLog(@"Finished lookup");
+    self.viewLocation.lat = [NSNumber numberWithDouble:coordinates.latitude];
+    self.viewLocation.lng = [NSNumber numberWithDouble:coordinates.longitude];
+    
+    NSError *error = nil;
+    [[AppDelegate managedObjectContext] save:&error]; // silent fail
+    if(error) {
+        NSLog(@"Silent fail for geocoder address save");
+    }
+    
+    [self updateMapForLocation:self.viewLocation animated:YES];
 }
-- (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
-    //NSLog(@"bingo!");
+
+- (void)didFailGeoLookup
+{
+    NSLog(@"Silent fail for geocoder address lookup");
+}
+
+- (void)didReceivePermissionForUserLocation
+{
+    NSLog(@"Did receive user location permission");
+    [self updateMap:YES];
 }
 
 @end

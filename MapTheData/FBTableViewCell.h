@@ -8,9 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@class FBLocation;
+
 @interface FBTableViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *textLabel;
+@property (weak, nonatomic) FBLocation *location;
 
 
 @end

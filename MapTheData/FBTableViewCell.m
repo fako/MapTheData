@@ -10,6 +10,8 @@
 
 @implementation FBTableViewCell
 
+@synthesize location;
+
 - (void)awakeFromNib
 {
     // Initialization code
