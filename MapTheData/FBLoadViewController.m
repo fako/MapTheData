@@ -32,16 +32,11 @@
     [self performSegueWithIdentifier:@"ReadySegue" sender:self];
 }
 
-- (void)willStartRequest
-{
-    NSLog(@"Starting request");
+- (void)didFailToLoadModels {
+    // TODO: see if we have anything in db and continue if we do
 }
 
-- (void)didFinishRequest
-{
-    NSLog(@"Finished request");
+- (void)didSucceedToLoadModels {
     [self ready];
 }
-
-
 @end

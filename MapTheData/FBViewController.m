@@ -14,36 +14,26 @@
 
 @implementation FBViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+// TODO: implement Activity Indicator here
+
+- (void)willStartRequest
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
+    NSLog(@"Starting request");
 }
 
-- (void)viewDidLoad
+- (void)didFinishRequest
 {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    NSLog(@"Finished request");
 }
 
-- (void)didReceiveMemoryWarning
+- (void)didFailToLoadModels
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    NSLog(@"Model retrieval failed");
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+- (void)didSucceedToLoadModels
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    NSLog(@"Model retrieval succeeded");
 }
-*/
 
 @end

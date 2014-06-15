@@ -8,9 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-#import "FBServerDelegate.h"
+#import "FBViewController.h"
 
 
-@interface FBLoadViewController : UIViewController <FBServerDelegate>
+
+@interface FBLoadViewController : FBViewController
 
 @end

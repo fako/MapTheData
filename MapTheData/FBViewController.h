@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FBViewController : UIViewController
+#import "FBServerDelegate.h"
+
+@interface FBViewController : UIViewController <FBServerDelegate>
 
 @end
