@@ -30,6 +30,7 @@
 		2AAD192F194794EA00BA8E22 /* TODO in Resources */ = {isa = PBXBuildFile; fileRef = 2AAD192E194794EA00BA8E22 /* TODO */; };
 		2AED10C8194DC7C800CE5248 /* FBGeodata.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AED10C5194DC7C800CE5248 /* FBGeodata.m */; };
 		2AED10C9194DC7C800CE5248 /* FBServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AED10C7194DC7C800CE5248 /* FBServer.m */; };
+		2AED10CC194DD36300CE5248 /* FBModels.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AED10CB194DD36300CE5248 /* FBModels.m */; };
 		2AF72D06193E4CA300BC1CF0 /* FBLoadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AF72D05193E4CA300BC1CF0 /* FBLoadViewController.m */; };
 		2AF72D0A193F033400BC1CF0 /* FBTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AF72D08193F033400BC1CF0 /* FBTableViewCell.m */; };
 		2AF72D0B193F033400BC1CF0 /* FBTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2AF72D09193F033400BC1CF0 /* FBTableViewCell.xib */; };
@@ -81,6 +82,8 @@
 		2AED10C5194DC7C800CE5248 /* FBGeodata.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FBGeodata.m; path = Services/FBGeodata.m; sourceTree = "<group>"; };
 		2AED10C6194DC7C800CE5248 /* FBServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FBServer.h; path = Services/FBServer.h; sourceTree = "<group>"; };
 		2AED10C7194DC7C800CE5248 /* FBServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FBServer.m; path = Services/FBServer.m; sourceTree = "<group>"; };
+		2AED10CA194DD36300CE5248 /* FBModels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FBModels.h; path = Services/FBModels.h; sourceTree = "<group>"; };
+		2AED10CB194DD36300CE5248 /* FBModels.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FBModels.m; path = Services/FBModels.m; sourceTree = "<group>"; };
 		2AF72D04193E4CA300BC1CF0 /* FBLoadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBLoadViewController.h; sourceTree = "<group>"; };
 		2AF72D05193E4CA300BC1CF0 /* FBLoadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBLoadViewController.m; sourceTree = "<group>"; };
 		2AF72D07193F033400BC1CF0 /* FBTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBTableViewCell.h; sourceTree = "<group>"; };
@@ -208,6 +211,8 @@
 		2A5DF14A194B582100F905C3 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				2AED10CA194DD36300CE5248 /* FBModels.h */,
+				2AED10CB194DD36300CE5248 /* FBModels.m */,
 				2AED10C4194DC7C800CE5248 /* FBGeodata.h */,
 				2AED10C5194DC7C800CE5248 /* FBGeodata.m */,
 				2AED10C6194DC7C800CE5248 /* FBServer.h */,
@@ -364,6 +369,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A5DF15D194B721400F905C3 /* FBLocation.m in Sources */,
+				2AED10CC194DD36300CE5248 /* FBModels.m in Sources */,
 				2AF72D0A193F033400BC1CF0 /* FBTableViewCell.m in Sources */,
 				2A285046193CD592000F20AF /* FBAppDelegate.m in Sources */,
 				2A285042193CD592000F20AF /* main.m in Sources */,

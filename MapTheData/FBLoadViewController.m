@@ -33,10 +33,12 @@
 }
 
 - (void)didFailToLoadModels {
+    [super didFailToLoadModels];
     // TODO: see if we have anything in db and continue if we do
 }
 
 - (void)didSucceedToLoadModels {
+    [super didSucceedToLoadModels];
     [self ready];
 }
 @end
