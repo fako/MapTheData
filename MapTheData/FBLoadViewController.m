@@ -30,7 +30,7 @@
     if([FBLocation locationsExistInDatabase]) {
         [self ready];
     } else {
-        // TODO: update label
+        self.loadLabel.text = @"No connection :(";
     }
 }
 

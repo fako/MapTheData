@@ -30,6 +30,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="loadLabel" destination="fpx-gD-FLL" id="2c9-2Y-JdD"/>
                         <segue destination="Z1V-Je-xr6" kind="modal" identifier="ReadySegue" id="u1Y-Xx-Jrr"/>
                     </connections>
                 </viewController>

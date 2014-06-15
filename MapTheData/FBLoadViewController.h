@@ -13,5 +13,6 @@
 
 
 @interface FBLoadViewController : FBViewController
+@property (weak, nonatomic) IBOutlet UILabel *loadLabel;
 
 @end
