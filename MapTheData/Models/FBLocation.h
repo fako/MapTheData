@@ -19,5 +19,4 @@
 @property (nonatomic, copy) NSNumber* lat;
 @property (nonatomic, copy) NSNumber* lng;
 
-
 @end

@@ -23,13 +23,13 @@
 		2A285064193CD592000F20AF /* MapTheDataTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A285063193CD592000F20AF /* MapTheDataTests.m */; };
 		2A5DF149194B57DD00F905C3 /* FBViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A5DF148194B57DD00F905C3 /* FBViewController.m */; };
 		2A5DF14D194B585400F905C3 /* FBDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A5DF14C194B585400F905C3 /* FBDatabase.m */; };
-		2A5DF150194B587200F905C3 /* FBGeodata.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A5DF14F194B587200F905C3 /* FBGeodata.m */; };
-		2A5DF153194B588D00F905C3 /* FBServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A5DF152194B588D00F905C3 /* FBServer.m */; };
-		2A64A5E9193D0AF30096C62A /* FBLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A64A5E8193D0AF30096C62A /* FBLocation.m */; };
+		2A5DF15D194B721400F905C3 /* FBLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A5DF15C194B721400F905C3 /* FBLocation.m */; };
 		2A64A5EB193DA7700096C62A /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A64A5EA193DA7700096C62A /* CoreData.framework */; };
 		2A64A5EE193DA7E00096C62A /* TheData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2A64A5EC193DA7E00096C62A /* TheData.xcdatamodeld */; };
 		2A6B7B7A19419BAA0031CC6D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A6B7B7919419BAA0031CC6D /* MapKit.framework */; };
 		2AAD192F194794EA00BA8E22 /* TODO in Resources */ = {isa = PBXBuildFile; fileRef = 2AAD192E194794EA00BA8E22 /* TODO */; };
+		2AED10C8194DC7C800CE5248 /* FBGeodata.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AED10C5194DC7C800CE5248 /* FBGeodata.m */; };
+		2AED10C9194DC7C800CE5248 /* FBServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AED10C7194DC7C800CE5248 /* FBServer.m */; };
 		2AF72D06193E4CA300BC1CF0 /* FBLoadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AF72D05193E4CA300BC1CF0 /* FBLoadViewController.m */; };
 		2AF72D0A193F033400BC1CF0 /* FBTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AF72D08193F033400BC1CF0 /* FBTableViewCell.m */; };
 		2AF72D0B193F033400BC1CF0 /* FBTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2AF72D09193F033400BC1CF0 /* FBTableViewCell.xib */; };
@@ -70,16 +70,17 @@
 		2A5DF148194B57DD00F905C3 /* FBViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBViewController.m; sourceTree = "<group>"; };
 		2A5DF14B194B585400F905C3 /* FBDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FBDatabase.h; path = Services/FBDatabase.h; sourceTree = "<group>"; };
 		2A5DF14C194B585400F905C3 /* FBDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FBDatabase.m; path = Services/FBDatabase.m; sourceTree = "<group>"; };
-		2A5DF14E194B587200F905C3 /* FBGeodata.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBGeodata.h; sourceTree = "<group>"; };
-		2A5DF14F194B587200F905C3 /* FBGeodata.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBGeodata.m; sourceTree = "<group>"; };
-		2A5DF151194B588D00F905C3 /* FBServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBServer.h; sourceTree = "<group>"; };
-		2A5DF152194B588D00F905C3 /* FBServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBServer.m; sourceTree = "<group>"; };
-		2A64A5E7193D0AF30096C62A /* FBLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBLocation.h; sourceTree = "<group>"; };
-		2A64A5E8193D0AF30096C62A /* FBLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBLocation.m; sourceTree = "<group>"; };
+		2A5DF15B194B721400F905C3 /* FBLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FBLocation.h; path = Models/FBLocation.h; sourceTree = "<group>"; };
+		2A5DF15C194B721400F905C3 /* FBLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FBLocation.m; path = Models/FBLocation.m; sourceTree = "<group>"; };
+		2A5DF15E194C317400F905C3 /* FBServerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FBServerDelegate.h; path = Services/FBServerDelegate.h; sourceTree = "<group>"; };
 		2A64A5EA193DA7700096C62A /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		2A64A5ED193DA7E00096C62A /* TheData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TheData.xcdatamodel; sourceTree = "<group>"; };
 		2A6B7B7919419BAA0031CC6D /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		2AAD192E194794EA00BA8E22 /* TODO */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TODO; sourceTree = "<group>"; };
+		2AED10C4194DC7C800CE5248 /* FBGeodata.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FBGeodata.h; path = Services/FBGeodata.h; sourceTree = "<group>"; };
+		2AED10C5194DC7C800CE5248 /* FBGeodata.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FBGeodata.m; path = Services/FBGeodata.m; sourceTree = "<group>"; };
+		2AED10C6194DC7C800CE5248 /* FBServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FBServer.h; path = Services/FBServer.h; sourceTree = "<group>"; };
+		2AED10C7194DC7C800CE5248 /* FBServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FBServer.m; path = Services/FBServer.m; sourceTree = "<group>"; };
 		2AF72D04193E4CA300BC1CF0 /* FBLoadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBLoadViewController.h; sourceTree = "<group>"; };
 		2AF72D05193E4CA300BC1CF0 /* FBLoadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBLoadViewController.m; sourceTree = "<group>"; };
 		2AF72D07193F033400BC1CF0 /* FBTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBTableViewCell.h; sourceTree = "<group>"; };
@@ -154,6 +155,7 @@
 		2A28503B193CD592000F20AF /* MapTheData */ = {
 			isa = PBXGroup;
 			children = (
+				2A5DF154194B660B00F905C3 /* Models */,
 				2A5DF14A194B582100F905C3 /* Services */,
 				2A285044193CD592000F20AF /* FBAppDelegate.h */,
 				2A285045193CD592000F20AF /* FBAppDelegate.m */,
@@ -166,8 +168,6 @@
 				2AF72D05193E4CA300BC1CF0 /* FBLoadViewController.m */,
 				2A285050193CD592000F20AF /* Images.xcassets */,
 				2A28503C193CD592000F20AF /* Supporting Files */,
-				2A64A5E7193D0AF30096C62A /* FBLocation.h */,
-				2A64A5E8193D0AF30096C62A /* FBLocation.m */,
 				2AF72D07193F033400BC1CF0 /* FBTableViewCell.h */,
 				2AF72D08193F033400BC1CF0 /* FBTableViewCell.m */,
 				2AF72D09193F033400BC1CF0 /* FBTableViewCell.xib */,
@@ -208,14 +208,24 @@
 		2A5DF14A194B582100F905C3 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				2AED10C4194DC7C800CE5248 /* FBGeodata.h */,
+				2AED10C5194DC7C800CE5248 /* FBGeodata.m */,
+				2AED10C6194DC7C800CE5248 /* FBServer.h */,
+				2AED10C7194DC7C800CE5248 /* FBServer.m */,
 				2A5DF14B194B585400F905C3 /* FBDatabase.h */,
 				2A5DF14C194B585400F905C3 /* FBDatabase.m */,
-				2A5DF14E194B587200F905C3 /* FBGeodata.h */,
-				2A5DF14F194B587200F905C3 /* FBGeodata.m */,
-				2A5DF151194B588D00F905C3 /* FBServer.h */,
-				2A5DF152194B588D00F905C3 /* FBServer.m */,
+				2A5DF15E194C317400F905C3 /* FBServerDelegate.h */,
 			);
 			name = Services;
+			sourceTree = "<group>";
+		};
+		2A5DF154194B660B00F905C3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2A5DF15B194B721400F905C3 /* FBLocation.h */,
+				2A5DF15C194B721400F905C3 /* FBLocation.m */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -353,17 +363,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2A64A5E9193D0AF30096C62A /* FBLocation.m in Sources */,
+				2A5DF15D194B721400F905C3 /* FBLocation.m in Sources */,
 				2AF72D0A193F033400BC1CF0 /* FBTableViewCell.m in Sources */,
 				2A285046193CD592000F20AF /* FBAppDelegate.m in Sources */,
 				2A285042193CD592000F20AF /* main.m in Sources */,
 				2A5DF149194B57DD00F905C3 /* FBViewController.m in Sources */,
 				2A64A5EE193DA7E00096C62A /* TheData.xcdatamodeld in Sources */,
 				2AF72D06193E4CA300BC1CF0 /* FBLoadViewController.m in Sources */,
-				2A5DF153194B588D00F905C3 /* FBServer.m in Sources */,
+				2AED10C9194DC7C800CE5248 /* FBServer.m in Sources */,
 				2A5DF14D194B585400F905C3 /* FBDatabase.m in Sources */,
 				2A28504F193CD592000F20AF /* FBMapViewController.m in Sources */,
-				2A5DF150194B587200F905C3 /* FBGeodata.m in Sources */,
+				2AED10C8194DC7C800CE5248 /* FBGeodata.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
