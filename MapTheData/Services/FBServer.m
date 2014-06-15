@@ -42,7 +42,7 @@
 - (NSString*)pathForModel:(Class)model
 {
     NSString *modelPath = [FBModels pathFromModel:model];
-    return [NSString stringWithFormat:@"%@%@", self.basePath, modelPath];
+    return [NSString stringWithFormat:@"%@%@stations/", self.basePath, modelPath];
 }
 
 #pragma mark - Server calls

@@ -18,6 +18,7 @@
 @property(strong, nonatomic) CLLocationManager *locationManager;
 @property(strong, nonatomic) CLGeocoder *geocoder;
 @property(strong, nonatomic) id<FBGeodataDelegate> delegate;
+@property(assign, nonatomic) BOOL busy;
 
 - (void)coordinatesFromAddressString:(NSString*)address;
 

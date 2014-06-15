@@ -33,18 +33,26 @@
 - (void)coordinatesFromAddressString:(NSString*)address {
     
     NSAssert(self.delegate, @"Delegate has not been set for FBGeodata");
+    if(self.busy) {
+        return;
+    }
     
     if([self.delegate respondsToSelector:@selector(willStartGeoLookup)]) {
         [self.delegate performSelector:@selector(willStartGeoLookup)];
     }
+    
+    self.busy = YES;
 
     [self.geocoder geocodeAddressString:address completionHandler:^(NSArray *placemarks, NSError *error) {
         
+        self.busy = NO;
         if(error) {
+            
             if([self.delegate respondsToSelector:@selector(didFailGeoLookup)]) {
                 [self.delegate performSelector:@selector(didFailGeoLookup)];
             }
         } else {
+            
             CLLocationCoordinate2D coordinate = ((CLPlacemark*)placemarks[0]).location.coordinate;
             if([self.delegate respondsToSelector:@selector(didFinishGeoLookup:)]) {
                 [self.delegate didFinishGeoLookup:coordinate];
