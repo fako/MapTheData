@@ -10,10 +10,9 @@
 
 @protocol FBServerDelegate <NSObject>
 
-- (void)willStartRequest;
-- (void)didFinishRequest;
-- (void)didFailToLoadModels;
-- (void)didSucceedToLoadModels;
-
+- (void)willStartLoadFromServer;
+- (void)didFinishLoadFromServer;
+- (void)didFailToLoadModelsFromServer;
+- (void)didSucceedToLoadModelsFromServer;
 
 @end

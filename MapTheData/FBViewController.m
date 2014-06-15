@@ -9,31 +9,56 @@
 #import "FBViewController.h"
 
 @interface FBViewController ()
-
 @end
 
 @implementation FBViewController
 
+#pragma mark - Helpers
+
 // TODO: implement Activity Indicator here
 
-- (void)willStartRequest
+#pragma mark - Server delegate methods
+
+- (void)willStartLoadFromServer
 {
     NSLog(@"Starting request");
 }
 
-- (void)didFinishRequest
+- (void)didFinishLoadFromServer
 {
     NSLog(@"Finished request");
 }
 
-- (void)didFailToLoadModels
+- (void)didFailToLoadModelsFromServer
 {
     NSLog(@"Model retrieval failed");
 }
 
-- (void)didSucceedToLoadModels
+- (void)didSucceedToLoadModelsFromServer
 {
     NSLog(@"Model retrieval succeeded");
+}
+
+#pragma mark - Database delegate methods
+
+- (void)willStartDatabaseFetch {
+    NSLog(@"Starting query");
+}
+
+- (void)didFinishDatabaseFetch {
+    NSLog(@"Finished query");
+}
+
+- (void)didFailToFetchModelsFromDatabase {
+    NSLog(@"Model query failed");
+}
+
+- (void)noModelsForFetchFromDatabase {
+    NSLog(@"No results returned by query");
+}
+
+- (void)didSucceedToFetchModelsFromDatabase:(NSArray*)fetched {
+    NSLog(@"Model query succeeded");
 }
 
 @end

@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 
 #import "FBServerDelegate.h"
+#import "FBDatabaseDelegate.h"
 
-@interface FBViewController : UIViewController <FBServerDelegate>
+@interface FBViewController : UIViewController <FBServerDelegate, FBDatabaseDelegate>
 
 @end

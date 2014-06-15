@@ -10,7 +10,6 @@
 #import <CoreData/CoreData.h>
 
 #import "FBLoadViewController.h"
-#import "FBServer.h"
 #import "FBLocation.h"
 
 @implementation FBLoadViewController
@@ -18,13 +17,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSString *baseUrl = @"http://still-atoll-8938.herokuapp.com";
-    NSString *basePath = @"/api/";
-    
-    [FBServer sharedServer].baseUrl = baseUrl; // TODO: move this to FBViewController or category?
-    [FBServer sharedServer].basePath = basePath;
-    [FBServer sharedServer].delegate = self;
-    [[FBServer sharedServer] requestObjectsForModel:[FBLocation class]];
+    [FBLocation loadFromServer:self]; // loads locations from server and informs this ViewController
 }
 
 - (void)ready
@@ -32,13 +25,19 @@
     [self performSegueWithIdentifier:@"ReadySegue" sender:self];
 }
 
-- (void)didFailToLoadModels {
-    [super didFailToLoadModels];
+- (void)didFailToLoadModelsFromServer {
+    [super didFailToLoadModelsFromServer];
+    [FBLocation locationsExistInDatabase:self]; // checks existance and informs this ViewController
     // TODO: see if we have anything in db and continue if we do
 }
 
-- (void)didSucceedToLoadModels {
-    [super didSucceedToLoadModels];
+- (void)didSucceedToLoadModelsFromServer {
+    [super didSucceedToLoadModelsFromServer];
+    [self ready];
+}
+
+- (void)didSucceedToFetchModelsFromDatabase:(NSArray *)fetched {
+    [super didSucceedToFetchModelsFromDatabase:fetched];
     [self ready];
 }
 @end

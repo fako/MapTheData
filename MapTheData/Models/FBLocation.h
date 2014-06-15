@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
+#import "FBServerDelegate.h"
+#import "FBDatabaseDelegate.h"
 
 @interface FBLocation : NSManagedObject
 
@@ -18,5 +20,10 @@
 @property (nonatomic, copy) NSNumber* typeNumber;
 @property (nonatomic, copy) NSNumber* lat;
 @property (nonatomic, copy) NSNumber* lng;
+
++ (void)loadFromServer:(id<FBServerDelegate>)delegate;
++ (BOOL)locationsExistInDatabase:(id<FBDatabaseDelegate>)delegate;
+
++ (void)searchFor:(NSString*)term delegate:(id<FBDatabaseDelegate>)delegate;
 
 @end

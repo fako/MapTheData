@@ -5,7 +5,6 @@
 //  Created by Fako Berkers on 6/13/14.
 //  Copyright (c) 2014 Fako Berkers. All rights reserved.
 //
-#import <RestKit/RestKit.h>
 
 #import "FBServer.h"
 #import "FBModels.h"
@@ -17,17 +16,12 @@
 
 + (instancetype)sharedServer
 {
-    
     static FBServer *server;
-    
     @synchronized(self) {
-        
         if(!server) {
             server = [self new];
         }
-
     }
-    
     return server;
 }
 
@@ -56,33 +50,33 @@
 - (void)requestObjectsForModel:(Class)model
 {
     NSAssert(self.restKitObjectManager, @"RestKit doesn't seem to be setup.");
+    NSAssert(self.delegate, @"Delegate has not been set for FBServer");
     
-    if([self.delegate respondsToSelector:@selector(willStartRequest)]) {
-        [self.delegate performSelector:@selector(willStartRequest)];
+    if([self.delegate respondsToSelector:@selector(willStartLoadFromServer)]) {
+        [self.delegate performSelector:@selector(willStartLoadFromServer)];
     }
     
     [self.restKitObjectManager addResponseDescriptor:[self responseDescriptorForModel:model]];
     [self.restKitObjectManager getObjectsAtPath:[self pathForModel:model]
-                                           parameters:nil
-                                              success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                                                  if(self.delegate) {
-                                                      if([self.delegate respondsToSelector:@selector(didSucceedToLoadModels)]) {
-                                                          [self.delegate performSelector:@selector(didSucceedToLoadModels)];
-                                                      }
-                                                      if([self.delegate respondsToSelector:@selector(didFinishRequest)]) {
-                                                          [self.delegate performSelector:@selector(didFinishRequest)];
-                                                      }
-                                                  }
-                                              } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                                  if(self.delegate) {
-                                                      if([self.delegate respondsToSelector:@selector(didFailToLoadModels)]) {
-                                                          [self.delegate performSelector:@selector(didFailToLoadModels)];
-                                                      }
-                                                      if([self.delegate respondsToSelector:@selector(didFinishRequest)]) {
-                                                          [self.delegate performSelector:@selector(didFinishRequest)];
-                                                      }
-                                                  }
-                                              }];
+                                     parameters:nil
+                                        success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult)
+                                                {
+                                                    if([self.delegate respondsToSelector:@selector(didSucceedToLoadModelsFromServer)]) {
+                                                      [self.delegate performSelector:@selector(didSucceedToLoadModelsFromServer)];
+                                                    }
+                                                    if([self.delegate respondsToSelector:@selector(didFinishLoadFromServer)]) {
+                                                      [self.delegate performSelector:@selector(didFinishLoadFromServer)];
+                                                    }
+                                                }
+                                        failure:^(RKObjectRequestOperation *operation, NSError *error)
+                                                {
+                                                    if([self.delegate respondsToSelector:@selector(didFailToLoadModelsFromServer)]) {
+                                                      [self.delegate performSelector:@selector(didFailToLoadModelsFromServer)];
+                                                    }
+                                                    if([self.delegate respondsToSelector:@selector(didFinishLoadFromServer)]) {
+                                                      [self.delegate performSelector:@selector(didFinishLoadFromServer)];
+                                                    }
+                                                }];
 }
 
 #pragma mark - RestKit helpers

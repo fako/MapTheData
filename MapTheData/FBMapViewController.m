@@ -138,30 +138,7 @@ static NSString *kCellIdentifier = @"Cell";
 }
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-    NSManagedObjectContext *moc = [AppDelegate managedObjectContext];
-    NSEntityDescription *entityDescription = [NSEntityDescription
-                                              entityForName:@"Location" inManagedObjectContext:moc];
-    NSFetchRequest *request = [[NSFetchRequest alloc] init];
-    [request setEntity:entityDescription];
-    
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:
-                              @"name CONTAINS[c] %@", searchText];
-    [request setPredicate:predicate];
-    
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]
-                                        initWithKey:@"name" ascending:YES];
-    [request setSortDescriptors:@[sortDescriptor]];
-    
-    NSError *error;
-    NSArray *array = [moc executeFetchRequest:request error:&error];
-    
-    
-    if (array == nil)
-    {
-        NSLog(@"fail :(");
-        // Deal with error...
-    }
-    self.searchResults = array;
+    // Search here using FBLocation and store results within delegate function ...
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -195,22 +172,22 @@ static NSString *kCellIdentifier = @"Cell";
 }
 
 - (void)mapViewWillStartLocatingUser:(MKMapView *)mapView {
-    NSLog(@"Getting user info now");
+    //NSLog(@"Getting user info now");
 }
 - (void)mapViewDidStopLocatingUser:(MKMapView *)mapView {
-    NSLog(@"Stopped user info now");
+    //NSLog(@"Stopped user info now");
 }
 - (void)mapViewWillStartLoadingMap:(MKMapView *)mapView {
-    NSLog(@"I am delegate");
+    //NSLog(@"I am delegate");
 }
 - (void)mapView:(MKMapView *)mapView didFailToLocateUserWithError:(NSError *)error {
-    NSLog(@"User location error");
+    //NSLog(@"User location error");
 }
 - (void)mapViewWillStartRenderingMap:(MKMapView *)mapView {
-    NSLog(@"Starting with user location: %hhd", mapView.userLocationVisible);
+    //NSLog(@"Starting with user location: %hhd", mapView.userLocationVisible);
 }
 - (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
-    NSLog(@"bingo!");
+    //NSLog(@"bingo!");
 }
 
 @end
