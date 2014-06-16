@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>F5558211-F46A-4BEF-B629-6E86C9AA0D33</string>
+	<key>IDESourceControlProjectName</key>
+	<string>MapTheData</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>C1643C04-F87B-4F72-9389-8710B86AC29A</key>
+		<string>ssh://github.com/fako/MapTheData.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>MapTheData.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>C1643C04-F87B-4F72-9389-8710B86AC29A</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/fako/MapTheData.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>C1643C04-F87B-4F72-9389-8710B86AC29A</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>C1643C04-F87B-4F72-9389-8710B86AC29A</string>
+			<key>IDESourceControlWCCName</key>
+			<string>MapTheData</string>
+		</dict>
+	</array>
+</dict>
+</plist>
