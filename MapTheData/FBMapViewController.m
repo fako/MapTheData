@@ -17,7 +17,7 @@
 #import "FBUser.h"
 
 static NSString *kCellIdentifier = @"Cell";
-static const NSUInteger MAP_PADDING = 20;
+static const NSUInteger MAP_PADDING = 60;
 
 
 @implementation FBMapViewController
@@ -99,14 +99,12 @@ static const NSUInteger MAP_PADDING = 20;
 #pragma mark - Search bar
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-    // TODO: Search here using FBLocation and store results within delegate function ...
     [FBLocation searchFor:searchText delegate:self];
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
     [self.searchDisplayController setActive:NO animated:YES];
-    // TODO: perform request here to see if it is there
-    NSLog(@"%@", searchBar.text);
+    [self updateMapForLocation:self.searchResults[0] animated:YES];
 }
 
 #pragma mark - Search table view
@@ -154,7 +152,7 @@ static const NSUInteger MAP_PADDING = 20;
     self.viewLocation.lng = [NSNumber numberWithDouble:coordinates.longitude];
     
     NSError *error = nil;
-    [[AppDelegate managedObjectContext] save:&error]; // silent fail
+    [[AppDelegate managedObjectContext] save:&error];
     if(error) {
         NSLog(@"Silent fail for geocoder address save");
     }
