@@ -65,15 +65,26 @@
                                     <outlet property="delegate" destination="Z1V-Je-xr6" id="iYt-xa-oe5"/>
                                 </connections>
                             </searchBar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BHY-BJ-9pC" userLabel="Statusbar View">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="6x2-Ni-eXc"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="BHY-BJ-9pC" firstAttribute="leading" secondItem="k4P-oR-xh7" secondAttribute="leading" id="3BN-pU-FYu"/>
                             <constraint firstAttribute="trailing" secondItem="OTd-Hx-ZAn" secondAttribute="trailing" id="7y9-UC-Okg"/>
                             <constraint firstAttribute="trailing" secondItem="QaY-bS-4m5" secondAttribute="trailing" id="AlI-IX-3U3"/>
+                            <constraint firstItem="BHY-BJ-9pC" firstAttribute="top" secondItem="k4P-oR-xh7" secondAttribute="top" id="Bj9-Zf-9fj"/>
                             <constraint firstItem="OTd-Hx-ZAn" firstAttribute="leading" secondItem="k4P-oR-xh7" secondAttribute="leading" id="Iid-LX-ErD"/>
                             <constraint firstItem="QaY-bS-4m5" firstAttribute="leading" secondItem="k4P-oR-xh7" secondAttribute="leading" id="Ma6-A5-qa8"/>
                             <constraint firstItem="QaY-bS-4m5" firstAttribute="top" secondItem="k4P-oR-xh7" secondAttribute="top" constant="20" id="a9I-sE-kMz"/>
                             <constraint firstAttribute="bottom" secondItem="OTd-Hx-ZAn" secondAttribute="bottom" id="gAU-gM-7jV"/>
+                            <constraint firstAttribute="trailing" secondItem="BHY-BJ-9pC" secondAttribute="trailing" id="gg3-ga-sQT"/>
                         </constraints>
                     </view>
                     <connections>
